@@ -141,6 +141,9 @@ driver_sources = {
         [ 'drivers/goodixmoc/goodix.c', 'drivers/goodixmoc/goodix_proto.c' ],
     'fpcmoc' :
         [ 'drivers/fpcmoc/fpc.c' ],
+    'fpcmoh' :
+        [ 'drivers/fpcmoh/fpc.c']
+
 }
 
 helper_sources = {
@@ -154,6 +157,9 @@ helper_sources = {
         [ ],
     'udev' :
         [ ],
+    'fpcbep' :
+        [ ],
+
     'virtual' :
         [ 'drivers/virtual-device-listener.c' ],
 }
@@ -222,6 +228,7 @@ deps = [
     gobject_dep,
     gusb_dep,
     mathlib_dep,
+    libdl_dep,
 ] + optional_deps
 
 # These are empty and only exist so that the include directories are created

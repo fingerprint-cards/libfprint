@@ -84,6 +84,7 @@ gio_dep = dependency('gio-unix-2.0', version: '>=' + glib_min_version)
 gobject_dep = dependency('gobject-2.0', version: '>=' + glib_min_version)
 gusb_dep = dependency('gusb', version: '>= 0.2.0')
 mathlib_dep = cc.find_library('m', required: false)
+libdl_dep = cc.find_library('dl', required: false)
 
 # The following dependencies are only used for tests
 cairo_dep = dependency('cairo', required: false)
@@ -126,6 +127,7 @@ default_drivers = [
     'goodixmoc',
     'nb1010',
     'fpcmoc',
+    'fpcmoh',
 
     # SPI
     'elanspi',
@@ -158,6 +160,7 @@ driver_helper_mapping = {
     'aes4000' : [ 'aeslib', 'aes3k' ],
     'uru4000' : [ 'nss' ],
     'elanspi' : [ 'udev' ],
+    'fpcmoh' :  [ 'fpcbep' ],
     'virtual_image'          : [ 'virtual' ],
     'virtual_device'         : [ 'virtual' ],
     'virtual_device_storage' : [ 'virtual' ],
@@ -231,6 +234,7 @@ foreach i : driver_helpers
         libfprint_conf.set10('HAVE_UDEV', true)
 
         optional_deps += gudev_dep
+
     endif
 endforeach
 
