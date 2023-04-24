@@ -198,7 +198,7 @@ fpc_read_dead_pixels (FpiUsbTransfer *transfer, FpDevice *device,
               return;
             }
 
-          if (1 != result)
+          if (1 != result && 5 != result)
             {
               fp_warn ("%s: unexpected finger! result %d try again!", G_STRFUNC, result);
               if (self->enroll_count > 0)
